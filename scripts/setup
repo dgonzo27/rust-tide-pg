@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+if [[ "${CI}" ]]; then
+    set -x
+fi
+
+function usage() {
+    echo -n \
+        "Usage: $(basename "$0")
+Sets up the project for local development.
+"
+}
+
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+    # Build and start the database
+    scripts/database
+
+    # Compile server
+    scripts/compile
+
+    # Run server
+    scripts/server
+fi

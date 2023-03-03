@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -e
+
+if [[ "${CI}" ]]; then
+    set -x
+fi
+
+function usage() {
+    echo -n \
+        "Usage: $(basename "$0")
+Runs the Rust server's test suite for this project.
+"
+}
+
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+
+    parent_dir=$(pwd)
+    cd "${parent_dir}/server"
+
+    echo "==Running tests..."
+    cargo test
+
+    cd "${parent_dir}"
+
+    echo "Done!"
+    echo ""
+fi

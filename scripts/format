@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+if [[ "${CI}" ]]; then
+    set -x
+fi
+
+function usage() {
+    echo -n \
+        "Usage: $(basename "$0")
+Lints, formats and checks the project code for errors.
+"
+}
+
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+
+    echo "==Validating code..."
+    pre-commit run --all-files
+
+    echo "Done!"
+    echo ""
+
+fi

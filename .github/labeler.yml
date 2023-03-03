@@ -1,0 +1,9 @@
+server:
+  - server/**/*
+
+documentation:
+  - '**/*.md'
+
+github-actions:
+  - any: ['**/*.yml']
+    all: ['!docker-compose.yml']

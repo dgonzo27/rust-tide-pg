@@ -1,0 +1,17 @@
+name: Pull Request Labeler
+
+on: pull_request
+
+jobs:
+  triage:
+    name: Label and Triage Pull Request
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/labeler@v4
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          sync-labels: true

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+if [[ "${CI}" ]]; then
+    set -x
+fi
+
+function usage() {
+    echo -n \
+        "Usage: $(basename "$0")
+Stops the local development environment for this project.
+"
+}
+
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+
+    echo "==Shutting down..."
+    docker-compose down
+    echo "Done!"
+    echo ""
+
+fi
