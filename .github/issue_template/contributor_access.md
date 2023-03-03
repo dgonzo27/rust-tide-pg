@@ -2,7 +2,7 @@
 name: Contributor access
 about: Request access to become a contributor for this project
 title: ""
-labels: ""
+labels: "access"
 assignees: ""
 ---
 
