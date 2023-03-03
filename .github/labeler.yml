@@ -1,6 +1,9 @@
 server:
   - server/**/*
 
+scripts:
+  - scripts/*
+
 documentation:
   - '**/*.md'
 

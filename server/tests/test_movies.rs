@@ -3,6 +3,7 @@ use server;
 mod common;
 
 
+// helper function to get a partial struct
 fn generate_movie_partial(title: String, desc: String) -> server::models::movie::MoviePartial {
     server::models::movie::MoviePartial {
         title: Some(title),
