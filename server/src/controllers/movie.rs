@@ -3,6 +3,7 @@ use crate::models::movie::{Movie, MoviePartial};
 use sqlx::{query, query_as};
 use sqlx::postgres::PgPool;
 
+
 pub async fn create(movie: MoviePartial, db_pool: &PgPool) -> tide::Result<Movie> {
     let row: Movie = query_as!(
         Movie,

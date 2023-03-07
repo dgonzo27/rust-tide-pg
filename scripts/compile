@@ -18,6 +18,15 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
     parent_dir=$(pwd)
     cd "${parent_dir}/server"
 
+    echo "==Waiting for PostgreSQL..."
+    sleep 5.0
+    while ! nc -z 0.0.0.0 5432; do
+        sleep 5.0
+    done
+
+    echo "PostgreSQL started!"
+    echo ""
+
     echo "==Compiling server..."
     cargo build
 
