@@ -78,11 +78,18 @@ This project uses a variation of [scripts to rule them all](https://github.com/g
 6. From a new terminal tab or an API client of your choice, test some API routes.
 
    ```sh
-   curl -v -d '{"title":"test", "description": "test"}' http://localhost:8080/movies
-   curl -g http://localhost:8080/movies
-   curl -g http://localhost:8080/movies/1
-   curl -X PUT -d '{"id": 1, "title": "new title", "description": "new desc"}' http://localhost:8080/movies/1
-   curl -X DELETE http://localhost:8080/movies/1
+   # create a new user
+   curl -v -d '{"username": "my_username", "first_name": "My", "last_name": "Username", "password": "password"}' http://localhost:8080/api/v1/auth/signup
+
+   # login as the new user
+   curl -v -d '{"username": "my_username", "password": "password"}' http://localhost:8080/api/v1/auth/login
+
+   # using the returned access token, test the movie routes
+   curl -H "Authorization: Bearer <access_token_here>" -v -d '{"title": "test", "description": "test"}' http://localhost:8080/api/v1/movies
+   curl -H "Authorization: Bearer <access_token_here>" -g http://localhost:8080/api/v1/movies
+   curl -H "Authorization: Bearer <access_token_here>" -g http://localhost:8080/api/v1/movies/1
+   curl -H "Authorization: Bearer <access_token_here>" -X PUT -d '{"id": 1, "title": "new title", "description": "new desc"}' http://localhost:8080/api/v1/movies/1
+   curl -H "Authorization: Bearer <access_token_here>" -X DELETE http://localhost:8080/api/v1/movies/1
    ```
 
 7. Stop the Rust server from your original terminal tab.
